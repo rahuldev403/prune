@@ -1,3 +1,11 @@
-import { drizzle } from 'drizzle-orm/neon-http';
+import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/better-sqlite3";
+import * as schema from "./db/schema";
 
-const db = drizzle(process.env.DATABASE_URL);
+if (!process.env.DATABASE_URL) {
+  throw new Error("Database url is missing. Cheack your .env file.");
+}
+
+const sql = neon(process.env.DATABASE_URL);
+
+export const db = drizzle(sql, { schema });
