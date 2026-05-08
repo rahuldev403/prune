@@ -11,7 +11,7 @@ const LOCAL_STORAGE_KEY = "prune_audit_state";
 export function SpendInputForm() {
   const [isMounted, setIsMounted] = useState(false);
   const form = useForm<SpendFormValues>({
-    resolver: zodResolver(spendFormSchema),
+    resolver: zodResolver(spendFormSchema) as any,
     defaultValues: {
       teamSize: "",
       primaryUseCase: "mixed",
