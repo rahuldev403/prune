@@ -12,7 +12,7 @@ export const PRICING_DB = {
     Pro: 20,
     "Pro+": 60,
     Ultra: 200,
-    Business: 40, // Business / Teams seat
+    Business: 40, 
   },
   "GitHub Copilot": {
     Free: 0,

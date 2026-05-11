@@ -19,7 +19,6 @@ export function runAuditEngine(input: SpendFormValues): AuditResult {
   const recommendations: AuditRecommendation[] = [];
   let totalMonthlySavings = 0;
 
-  // Extract just the tool names to check for overlaps easily
   const activeTools = input.tools.map((t) => t.toolName);
 
   input.tools.forEach((tool) => {
