@@ -55,7 +55,6 @@ export default async function AuditResultPage({
     <div className="relative overflow-hidden pb-20">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-48 right-0 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute -bottom-40 left-0 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl" />
       </div>
 
       <div className="relative w-full max-w-5xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
