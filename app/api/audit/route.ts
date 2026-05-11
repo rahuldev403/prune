@@ -1,10 +1,11 @@
-import { db } from "./../../../index";
+import { db } from "@/index";
 import { NextResponse } from "next/server";
 import { runAuditEngine } from "@/lib/engine";
 import { audits } from "@/db/schema";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+const geminiModelName = process.env.GEMINI_MODEL || "gemini-3-flash-preview";
 
 export async function POST(req: Request) {
   try {
@@ -14,9 +15,9 @@ export async function POST(req: Request) {
 
     if (process.env.GEMINI_API_KEY) {
       try {
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: geminiModelName });
 
-        const prompt = `You are an expert SaaS financial auditor. Write a punchy, professional 100-word summary for an engineering manager. Their total monthly AI overspend is $${engineResult.totalMonthlySavings}. Briefly mention these specific recommendations: ${JSON.stringify(engineResult.recommendations.map((r) => r.recommendedAction))}. Do not use pleasantries. Be direct.`;
+        const prompt = `You are an expert SaaS financial auditor. Write a punchy, professional 100-word summary for an engineering manager. Their total monthly AI overspend is $${engineResult.totalMonthlySavings}. Briefly mention these specific recommendations: ${JSON.stringify(engineResult.recommendations.map((r: { recommendedAction: string }) => r.recommendedAction))}. Do not use pleasantries. Be direct.`;
 
         const result = await model.generateContent(prompt);
         aiSummary = result.response.text();
@@ -31,7 +32,7 @@ export async function POST(req: Request) {
         inputData: body,
         engineResults: engineResult,
         totalMonthlySavings: engineResult.totalMonthlySavings,
-        aiSummary: aiSummary,
+        aiSummery: aiSummary,
       })
       .returning({ id: audits.id });
 

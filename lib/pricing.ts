@@ -11,6 +11,7 @@ export const PRICING_DB = {
     Hobby: 0,
     Pro: 20,
     Business: 40,
+    Ultra: 40,
   },
   "GitHub Copilot": {
     Individual: 10,

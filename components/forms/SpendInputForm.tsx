@@ -166,8 +166,8 @@ export function SpendInputForm() {
           + Add another tool
         </button>
       </div>
-      //{" "}
-      <button type="submit" disabled={isSubmitting}>
+
+      <button type="submit" className="border-2 p-5 cursor-pointer">
         {isSubmitting ? "Running Audit..." : "Run Audit"}
       </button>
     </form>
