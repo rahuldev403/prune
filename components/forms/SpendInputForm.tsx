@@ -278,9 +278,9 @@ function DropdownSelect({
         >
           {selected ? selected.label : placeholder}
         </span>
-        <span className="text-xs text-muted-foreground">▲</span>
+        <span className="text-xs text-muted-foreground">▼</span>
       </summary>
-      <div className="absolute bottom-full mb-2 max-h-56 w-full overflow-auto rounded-md border border-border bg-background shadow-lg">
+      <div className="absolute top-full mt-2 max-h-56 w-full overflow-auto rounded-md border border-border bg-background shadow-lg">
         <div className="px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
           {label}
         </div>
