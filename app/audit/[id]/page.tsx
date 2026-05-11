@@ -54,8 +54,8 @@ export default async function AuditResultPage({
   const annualSavings = savings * 12;
 
   return (
-    <div className="relative overflow-hidden pb-16 sm:pb-20">
-      <div className="relative w-full max-w-6xl mx-auto space-y-10 sm:space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="relative overflow-hidden pb-16 sm:pb-20 pt-8 sm:pt-12">
+      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-10 sm:space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <section className="rounded-3xl border border-border bg-linear-to-br from-background via-background to-primary/5 p-6 sm:p-8 md:p-12 shadow-[0_24px_70px_-46px_rgba(0,0,0,0.6)]">
           <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-start lg:justify-between">
             <div className="space-y-4">

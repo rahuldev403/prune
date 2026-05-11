@@ -37,7 +37,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-[calc(100vh-6rem)] overflow-hidden">
+    <div className="relative min-h-[100dvh] overflow-hidden flex flex-col justify-center">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 md:h-96 md:w-96 rounded-full bg-primary/12 blur-[140px]" />
         <div className="absolute left-1/2 top-10 h-48 w-48 -translate-x-1/2 rounded-full bg-primary/20 blur-[90px]" />
@@ -191,7 +191,7 @@ export default function Home() {
               ].map((copy) => (
                 <div
                   key={copy}
-                  className="min-w-[180px] sm:min-w-55 rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
+                  className="min-w-45 sm:min-w-55 rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
                 >
                   {copy}
                 </div>
@@ -205,7 +205,7 @@ export default function Home() {
               ].map((copy) => (
                 <div
                   key={`dup-${copy}`}
-                  className="min-w-[180px] sm:min-w-55 rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
+                  className="min-w-[180px] sm:min-w-[220px] rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
                 >
                   {copy}
                 </div>

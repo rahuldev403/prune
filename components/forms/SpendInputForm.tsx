@@ -135,7 +135,7 @@ export function SpendInputForm() {
               label: uc.charAt(0).toUpperCase() + uc.slice(1),
               value: uc,
             }))}
-            onChange={(value) => form.setValue("primaryUseCase", value)}
+            onChange={(value) => form.setValue("primaryUseCase", value as any)}
           />
         </div>
       </div>
