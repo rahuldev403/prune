@@ -54,18 +54,18 @@ export default async function AuditResultPage({
   const annualSavings = savings * 12;
 
   return (
-    <div className="relative overflow-hidden pb-20">
-      <div className="relative w-full max-w-5xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <section className="rounded-3xl border border-border bg-linear-to-br from-background via-background to-primary/5 p-8 md:p-12 shadow-[0_24px_70px_-46px_rgba(0,0,0,0.6)]">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+    <div className="relative overflow-hidden pb-16 sm:pb-20">
+      <div className="relative w-full max-w-6xl mx-auto space-y-10 sm:space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <section className="rounded-3xl border border-border bg-linear-to-br from-background via-background to-primary/5 p-6 sm:p-8 md:p-12 shadow-[0_24px_70px_-46px_rgba(0,0,0,0.6)]">
+          <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-start lg:justify-between">
             <div className="space-y-4">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
                 Audit Complete
               </p>
-              <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
                 Your AI spend snapshot
               </h1>
-              <p className="text-base md:text-lg text-muted-foreground max-w-xl">
+              <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
                 We modeled tool overlap, retail pricing, and tier efficiency to
                 surface actionable savings.
               </p>
@@ -77,12 +77,12 @@ export default async function AuditResultPage({
               </a>
             </div>
 
-            <div className="rounded-2xl border border-border bg-background/80 p-6 shadow-sm">
+            <div className="rounded-2xl border border-border bg-background/80 p-5 sm:p-6 shadow-sm">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                 Potential Monthly Savings
               </p>
-              <div className="mt-3 flex items-end gap-3">
-                <span className="text-5xl md:text-6xl font-black tracking-tight text-primary">
+              <div className="mt-3 flex flex-wrap items-end gap-2 sm:gap-3">
+                <span className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-primary">
                   ${savings}
                 </span>
                 <span className="text-sm text-muted-foreground">/ month</span>
@@ -95,7 +95,7 @@ export default async function AuditResultPage({
         </section>
 
         {audit.aiSummery && (
-          <section className="rounded-3xl border border-border bg-linear-to-br from-card/90 to-primary/5 p-8 md:p-10 shadow-sm">
+          <section className="rounded-3xl border border-border bg-linear-to-br from-card/90 to-primary/5 p-6 sm:p-8 md:p-10 shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">
                 Executive Summary
@@ -111,7 +111,7 @@ export default async function AuditResultPage({
         <section className="space-y-6">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight">
                 Detailed breakdown
               </h3>
               <p className="text-sm text-muted-foreground">
@@ -124,10 +124,8 @@ export default async function AuditResultPage({
           </div>
 
           {results.recommendations.length > 0 ? (
-            <div>
-              <div className="lg:sticky lg:top-6 self-start">
-                <SpendChart recommendations={results.recommendations} />
-              </div>
+            <div className="lg:sticky lg:top-6 self-start">
+              <SpendChart recommendations={results.recommendations} />
             </div>
           ) : (
             <div className="rounded-2xl border border-dashed border-border bg-muted/20 p-10 text-center">
@@ -141,13 +139,13 @@ export default async function AuditResultPage({
 
         <section>
           {savings >= 500 ? (
-            <div className="rounded-3xl bg-primary text-primary-foreground p-10 shadow-xl">
+            <div className="rounded-3xl bg-primary text-primary-foreground p-6 sm:p-8 md:p-10 shadow-xl">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="space-y-3">
                   <p className="text-xs uppercase tracking-[0.35em] text-primary-foreground/70">
                     Credex - Prune opportunity
                   </p>
-                  <h3 className="text-2xl md:text-3xl font-semibold">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold">
                     Stop paying retail for AI infrastructure.
                   </h3>
                   <p className="max-w-2xl text-primary-foreground/80">
@@ -156,19 +154,19 @@ export default async function AuditResultPage({
                     already using.
                   </p>
                 </div>
-                <button className="h-12 rounded-full bg-background px-8 text-sm font-semibold text-foreground shadow-lg shadow-black/10 cursor-pointer">
+                <button className="h-12 w-full sm:w-auto rounded-full bg-background px-8 text-sm font-semibold text-foreground shadow-lg shadow-black/10 cursor-pointer">
                   Book Credex - Prune Consultation
                 </button>
               </div>
             </div>
           ) : (
-            <div className="rounded-3xl border border-border bg-card/80 p-10">
+            <div className="rounded-3xl border border-border bg-card/80 p-6 sm:p-8 md:p-10">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="space-y-3">
                   <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
                     Stay in the loop
                   </p>
-                  <h3 className="text-2xl font-semibold">
+                  <h3 className="text-xl sm:text-2xl font-semibold">
                     You're spending well.
                   </h3>
                   <p className="text-sm text-muted-foreground max-w-xl">

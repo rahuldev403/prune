@@ -37,45 +37,46 @@ export default function Home() {
   };
 
   return (
-    <div className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 w-2xl">
-        <div className="absolute  right-[-12%] h-104 w-120 rounded-[42%] bg-primary/10 blur-[160px]" />
+    <div className="relative min-h-[calc(100vh-6rem)] overflow-hidden">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 md:h-96 md:w-96 rounded-full bg-primary/12 blur-[140px]" />
+        <div className="absolute left-1/2 top-10 h-48 w-48 -translate-x-1/2 rounded-full bg-primary/20 blur-[90px]" />
       </div>
 
-      <section className="relative mx-auto flex w-full max-w-5xl flex-col gap-8 py-12 text-left">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="space-y-6">
+      <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 py-10 sm:py-12 lg:py-16 text-left px-4 sm:px-6">
+        <div className="grid gap-6 sm:gap-8 lg:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="space-y-5 sm:space-y-6">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground">
               Credex - Prune
             </p>
-            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground">
               Your AI spend, rebuilt for clarity.
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl">
               Identify redundant tools, overpriced tiers, and missed pricing
               efficiencies in minutes. Get a financial-grade audit tailored to
               how your team actually uses AI.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
               <button
                 type="button"
                 onClick={openModal}
-                className="h-12 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground cursor-pointer"
+                className="h-12 w-full sm:w-auto rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground cursor-pointer"
               >
                 Run the audit
               </button>
               <button
                 type="button"
                 onClick={openModal}
-                className="h-12 rounded-full border border-border bg-background px-6 text-sm font-semibold text-foreground hover:bg-muted cursor-pointer"
+                className="h-12 w-full sm:w-auto rounded-full border border-border bg-background px-6 text-sm font-semibold text-foreground hover:bg-muted cursor-pointer"
               >
                 See how it works
               </button>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-border bg-card/80 p-6 shadow-xl">
+          <div className="rounded-3xl border-2 border-gray-600 bg-card/80 p-4 sm:p-1 shadow-xl w-full max-w-xl mx-auto lg:max-w-none">
             <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-muted/10">
               <Image
                 src="/illustration.png"
@@ -89,7 +90,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
               title: "Precision pricing",
@@ -179,8 +180,8 @@ export default function Home() {
               Use cases
             </p>
           </div>
-          <div className="relative overflow-hidden rounded-2xl border border-border bg-card/70 px-3 py-4">
-            <div className="flex w-max gap-3 animate-[prune-carousel_22s_linear_infinite]">
+          <div className="relative w-full max-w-full rounded-2xl border border-border bg-card/70 px-3 py-4 overflow-x-auto sm:overflow-hidden">
+            <div className="flex w-max gap-3 pr-6 animate-none sm:animate-[prune-carousel_28s_linear_infinite]">
               {[
                 "Cut redundant IDE seats in 1 audit",
                 "Unify ChatGPT + Claude costs",
@@ -190,7 +191,7 @@ export default function Home() {
               ].map((copy) => (
                 <div
                   key={copy}
-                  className="min-w-55 rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
+                  className="min-w-[180px] sm:min-w-55 rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
                 >
                   {copy}
                 </div>
@@ -204,7 +205,7 @@ export default function Home() {
               ].map((copy) => (
                 <div
                   key={`dup-${copy}`}
-                  className="min-w-55 rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
+                  className="min-w-[180px] sm:min-w-55 rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
                 >
                   {copy}
                 </div>
