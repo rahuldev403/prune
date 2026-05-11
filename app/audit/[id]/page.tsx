@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import type { AuditResult } from "@/lib/engine";
+import { NotifyLeadForm } from "@/components/forms/NotifyLeadForm";
 
 export async function generateMetadata({
   params,
@@ -53,12 +54,8 @@ export default async function AuditResultPage({
 
   return (
     <div className="relative overflow-hidden pb-20">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-48 right-0 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
-      </div>
-
       <div className="relative w-full max-w-5xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <section className="rounded-3xl border border-border bg-gradient-to-br from-background via-background to-muted/40 p-8 md:p-12 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.6)]">
+        <section className="rounded-3xl border border-border bg-linear-to-br from-background via-background to-primary/5 p-8 md:p-12 shadow-[0_24px_70px_-46px_rgba(0,0,0,0.6)]">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
             <div className="space-y-4">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
@@ -89,7 +86,7 @@ export default async function AuditResultPage({
                 </span>
                 <span className="text-sm text-muted-foreground">/ month</span>
               </div>
-              <p className="mt-4 inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-semibold text-emerald-500">
+              <p className="mt-4 inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
                 ${annualSavings} annual impact
               </p>
             </div>
@@ -97,12 +94,12 @@ export default async function AuditResultPage({
         </section>
 
         {audit.aiSummery && (
-          <section className="rounded-3xl border border-border bg-card/80 p-8 md:p-10 shadow-sm">
+          <section className="rounded-3xl border border-border bg-linear-to-br from-card/90 to-primary/5 p-8 md:p-10 shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">
                 Executive Summary
               </h3>
-              <span className="rounded-full border border-border bg-background px-3 py-1 text-xs font-semibold text-muted-foreground">
+              <span className="rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground">
                 Generated insights
               </span>
             </div>
@@ -130,7 +127,7 @@ export default async function AuditResultPage({
               {results.recommendations.map((rec: any, idx: number) => (
                 <div
                   key={idx}
-                  className="group rounded-2xl border border-border bg-card p-6 shadow-sm"
+                  className="group rounded-2xl border border-border bg-gradient-to-br from-card to-primary/5 p-6 shadow-sm transition hover:border-primary/40"
                 >
                   <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
                     <div className="space-y-3">
@@ -138,7 +135,7 @@ export default async function AuditResultPage({
                         <h4 className="text-xl font-semibold text-foreground">
                           {rec.toolName}
                         </h4>
-                        <span className="rounded-full bg-red-500/10 px-2.5 py-1 text-xs font-semibold text-red-500">
+                        <span className="rounded-full border border-border/60 bg-muted/50 px-2.5 py-1 text-xs font-semibold text-muted-foreground">
                           ${rec.currentSpend}/mo current
                         </span>
                       </div>
@@ -151,7 +148,7 @@ export default async function AuditResultPage({
                     </div>
 
                     {rec.savingsMonthly > 0 && (
-                      <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-5 py-4 text-center text-emerald-500 min-w-[140px]">
+                      <div className="rounded-2xl border border-primary/20 bg-primary/10 px-5 py-4 text-center text-primary min-w-[140px]">
                         <span className="block text-xs font-semibold uppercase tracking-wider">
                           Save monthly
                         </span>
@@ -212,15 +209,8 @@ export default async function AuditResultPage({
                     discounts for teams your size.
                   </p>
                 </div>
-                <div className="flex w-full max-w-sm items-center gap-2">
-                  <input
-                    type="email"
-                    placeholder="founder@startup.com"
-                    className="flex h-11 w-full rounded-full border border-input bg-background px-4 text-sm"
-                  />
-                  <button className="h-11 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground cursor-pointer">
-                    Notify Me
-                  </button>
+                <div className="w-full max-w-sm">
+                  <NotifyLeadForm auditId={audit.id} />
                 </div>
               </div>
             </div>

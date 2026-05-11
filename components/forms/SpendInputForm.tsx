@@ -108,7 +108,7 @@ export function SpendInputForm() {
           <label className="text-sm font-semibold leading-tight">
             Team Size
           </label>
-          <p className="min-h-[32px] text-xs leading-tight text-muted-foreground">
+          <p className="min-h-8 text-xs leading-tight text-muted-foreground">
             Headcount range helps contextualize recommendations.
           </p>
           <input
