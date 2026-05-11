@@ -104,7 +104,7 @@ export function SpendInputForm() {
         </div>
       )}
       <div className="grid gap-6 rounded-xl border border-border bg-muted/20 p-6 md:grid-cols-2 items-start">
-        <div className="flex h-full flex-col gap-2">
+        <div className="flex h-full flex-col gap-2 ">
           <label className="text-sm font-semibold leading-tight">
             Team Size
           </label>
@@ -117,11 +117,11 @@ export function SpendInputForm() {
             className="flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           />
         </div>
-        <div className="flex h-full flex-col gap-2">
+        <div className="flex h-full flex-col gap-2 ">
           <label className="text-sm font-semibold leading-tight">
             Primary Use Case
           </label>
-          <p className="min-h-[32px] text-xs leading-tight text-muted-foreground">
+          <p className="min-h-8 text-xs leading-tight text-muted-foreground">
             Determines which optimizations matter most.
           </p>
           <input type="hidden" {...form.register("primaryUseCase")} />
