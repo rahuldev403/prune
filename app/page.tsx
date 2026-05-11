@@ -37,7 +37,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-[calc(100vh-6rem)] overflow-hidden">
+    <div className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 w-2xl">
         <div className="absolute  right-[-12%] h-104 w-120 rounded-[42%] bg-primary/10 blur-[160px]" />
       </div>
@@ -61,7 +61,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={openModal}
-                className="h-12 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 cursor-pointer"
+                className="h-12 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground cursor-pointer"
               >
                 Run the audit
               </button>
@@ -190,7 +190,7 @@ export default function Home() {
               ].map((copy) => (
                 <div
                   key={copy}
-                  className="min-w-[220px] rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
+                  className="min-w-55 rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
                 >
                   {copy}
                 </div>
@@ -204,7 +204,7 @@ export default function Home() {
               ].map((copy) => (
                 <div
                   key={`dup-${copy}`}
-                  className="min-w-[220px] rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
+                  className="min-w-55 rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
                 >
                   {copy}
                 </div>
