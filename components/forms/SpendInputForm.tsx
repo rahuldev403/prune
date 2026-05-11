@@ -93,12 +93,15 @@ export function SpendInputForm() {
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10 w-full">
       {isSubmitting && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="w-40 max-w-[45vw]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
+          <div className="w-32 max-w-[45vw]">
             <DotLottieReact
               src="https://lottie.host/7c771d6b-ae0f-4e57-af4e-01db5d14c43f/GTWtbd2hhc.lottie"
               loop
               autoplay
+              className="h-28 w-28"
+              renderConfig={{ devicePixelRatio: 1, quality: 70 }}
+              useFrameInterpolation={false}
             />
           </div>
         </div>
