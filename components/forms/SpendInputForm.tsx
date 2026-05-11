@@ -87,10 +87,12 @@ export function SpendInputForm() {
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10 w-full">
-      <div className="grid gap-6 rounded-xl border border-border bg-muted/20 p-6 md:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-semibold">Team Size</label>
-          <p className="text-xs text-muted-foreground">
+      <div className="grid gap-6 rounded-xl border border-border bg-muted/20 p-6 md:grid-cols-2 items-start">
+        <div className="flex h-full flex-col gap-2">
+          <label className="text-sm font-semibold leading-tight">
+            Team Size
+          </label>
+          <p className="min-h-[32px] text-xs leading-tight text-muted-foreground">
             Headcount range helps contextualize recommendations.
           </p>
           <input
@@ -99,9 +101,11 @@ export function SpendInputForm() {
             className="flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-semibold">Primary Use Case</label>
-          <p className="text-xs text-muted-foreground">
+        <div className="flex h-full flex-col gap-2">
+          <label className="text-sm font-semibold leading-tight">
+            Primary Use Case
+          </label>
+          <p className="min-h-[32px] text-xs leading-tight text-muted-foreground">
             Determines which optimizations matter most.
           </p>
           <input type="hidden" {...form.register("primaryUseCase")} />
@@ -213,7 +217,7 @@ export function SpendInputForm() {
                 <button
                   type="button"
                   onClick={() => remove(index)}
-                  className="mt-6 h-11 rounded-md border border-red-500/30 px-3 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/10"
+                  className="mt-6 h-11 rounded-md border border-red-500/30 px-3 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/10 cursor-pointer"
                 >
                   Remove
                 </button>
@@ -227,7 +231,7 @@ export function SpendInputForm() {
           onClick={() =>
             append({ toolName: "Cursor", plan: "", seats: 1, monthlySpend: 0 })
           }
-          className="inline-flex items-center justify-center rounded-md border border-dashed border-primary/40 px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-primary hover:bg-primary/10"
+          className="inline-flex items-center justify-center rounded-md border border-dashed border-primary/40 px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-primary hover:bg-primary/10 cursor-pointer"
         >
           + Add another tool
         </button>
@@ -235,7 +239,7 @@ export function SpendInputForm() {
 
       <button
         type="submit"
-        className="h-12 w-full rounded-md bg-primary text-primary-foreground text-sm font-semibold shadow-lg shadow-primary/20 transition-transform hover:-translate-y-0.5"
+        className="h-12 w-full rounded-md bg-primary text-primary-foreground text-sm font-semibold shadow-lg shadow-primary/20 cursor-pointer"
       >
         {isSubmitting ? "Running Audit..." : "Run Audit"}
       </button>

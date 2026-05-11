@@ -15,6 +15,16 @@ export default function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+    document.body.style.overflow = "";
+  }, [isModalOpen]);
+
   const openModal = () => {
     setIsModalOpen(true);
     localStorage.setItem(MODAL_STORAGE_KEY, "true");
@@ -32,64 +42,163 @@ export default function Home() {
         <div className="absolute -bottom-40 left-[-5%] h-80 w-80 rounded-full bg-emerald-500/10 blur-[120px]" />
       </div>
 
-      <section className="relative mx-auto flex w-full max-w-5xl flex-col gap-10 py-16 text-left">
-        <div className="space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground">
-            Credex - Prune
-          </p>
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground">
-            Your AI spend, rebuilt for clarity.
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-            Identify redundant tools, overpriced tiers, and missed pricing
-            efficiencies in minutes. Get a financial-grade audit tailored to how
-            your team actually uses AI.
-          </p>
+      <section className="relative mx-auto flex w-full max-w-5xl flex-col gap-12 py-16 text-left">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="space-y-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground">
+              Credex - Prune
+            </p>
+            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground">
+              Your AI spend, rebuilt for clarity.
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+              Identify redundant tools, overpriced tiers, and missed pricing
+              efficiencies in minutes. Get a financial-grade audit tailored to
+              how your team actually uses AI.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                onClick={openModal}
+                className="h-12 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 cursor-pointer"
+              >
+                Run the audit
+              </button>
+              <button
+                type="button"
+                onClick={openModal}
+                className="h-12 rounded-full border border-border bg-background px-6 text-sm font-semibold text-foreground hover:bg-muted cursor-pointer"
+              >
+                See how it works
+              </button>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-border bg-card/80 p-6 shadow-xl">
+            <div className="rounded-2xl border border-border/80 bg-gradient-to-br from-muted/40 via-background to-background p-5">
+              <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                <span>AI Spend Pulse</span>
+                <span>Live</span>
+              </div>
+              <div className="mt-6 grid gap-3">
+                {["Cursor", "Claude", "ChatGPT"].map((tool) => (
+                  <div key={tool} className="space-y-2">
+                    <div className="flex items-center justify-between text-sm font-medium text-foreground">
+                      <span>{tool}</span>
+                      <span className="text-xs text-muted-foreground">
+                        $
+                        {tool === "Cursor" ? 420 : tool === "Claude" ? 180 : 95}
+                        /mo
+                      </span>
+                    </div>
+                    <div className="h-2 w-full rounded-full bg-muted">
+                      <div
+                        className="h-2 rounded-full bg-primary"
+                        style={{
+                          width:
+                            tool === "Cursor"
+                              ? "78%"
+                              : tool === "Claude"
+                                ? "52%"
+                                : "35%",
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 rounded-xl border border-dashed border-border/70 bg-background/70 p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  Savings alert
+                </p>
+                <p className="mt-2 text-lg font-semibold text-foreground">
+                  $340/mo identified in redundant spend
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4">
-          <button
-            type="button"
-            onClick={openModal}
-            className="h-12 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 cursor-pointer"
-          >
-            Run the audit
-          </button>
-          <button
-            type="button"
-            onClick={openModal}
-            className="h-12 rounded-full border border-border bg-background px-6 text-sm font-semibold text-foreground hover:bg-muted cursor-pointer"
-          >
-            See how it works
-          </button>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {[
             {
               title: "Precision pricing",
               description:
                 "Benchmarks against retail tiers and flags spend leakage fast.",
+              icon: (
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 3" />
+                </svg>
+              ),
             },
             {
               title: "Overlap detection",
               description:
                 "Highlights redundant tools and consolidates your AI stack.",
+              icon: (
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="9" cy="12" r="5" />
+                  <circle cx="15" cy="12" r="5" />
+                </svg>
+              ),
             },
             {
               title: "Actionable savings",
               description:
                 "Clear next steps with monthly and annual impact totals.",
+              icon: (
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M4 18h16" />
+                  <path d="M7 18V9" />
+                  <path d="M12 18V6" />
+                  <path d="M17 18v-4" />
+                </svg>
+              ),
             },
           ].map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-border bg-card/80 p-6 shadow-sm"
+              className="rounded-2xl border border-border bg-card/80 p-4 shadow-sm"
             >
-              <h3 className="text-lg font-semibold text-foreground">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-primary/10">
+                  {item.icon}
+                </span>
+                <h3 className="text-sm font-semibold text-foreground">
+                  {item.title}
+                </h3>
+              </div>
+              <p className="mt-2 text-xs text-muted-foreground">
                 {item.description}
               </p>
             </div>
@@ -98,8 +207,8 @@ export default function Home() {
       </section>
 
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-8 backdrop-blur-sm">
-          <div className="relative w-full max-w-3xl rounded-3xl border border-border bg-card p-6 shadow-2xl md:p-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-8 backdrop-blur-sm overflow-y-auto">
+          <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border border-border bg-card p-6 shadow-2xl md:p-8">
             <button
               type="button"
               onClick={closeModal}
