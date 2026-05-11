@@ -1,4 +1,4 @@
-import { SpendInputForm } from "@/components/SpendInputForm";
+import { SpendInputForm } from "@/components/forms/SpendInputForm";
 
 export default function Home() {
   return (
