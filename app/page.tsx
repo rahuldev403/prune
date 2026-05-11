@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { SpendInputForm } from "@/components/forms/SpendInputForm";
 
 const MODAL_STORAGE_KEY = "prune_audit_modal_open";
@@ -37,12 +38,11 @@ export default function Home() {
 
   return (
     <div className="relative min-h-[calc(100vh-6rem)] overflow-hidden">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-56 right-[-10%] h-96 w-96 rounded-full bg-primary/10 blur-[140px]" />
-        <div className="absolute -bottom-40 left-[-5%] h-80 w-80 rounded-full bg-emerald-500/10 blur-[120px]" />
+      <div className="pointer-events-none absolute inset-0 w-2xl">
+        <div className="absolute  right-[-12%] h-104 w-120 rounded-[42%] bg-primary/10 blur-[160px]" />
       </div>
 
-      <section className="relative mx-auto flex w-full max-w-5xl flex-col gap-12 py-16 text-left">
+      <section className="relative mx-auto flex w-full max-w-5xl flex-col gap-8 py-12 text-left">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="space-y-6">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground">
@@ -76,52 +76,20 @@ export default function Home() {
           </div>
 
           <div className="rounded-3xl border border-border bg-card/80 p-6 shadow-xl">
-            <div className="rounded-2xl border border-border/80 bg-gradient-to-br from-muted/40 via-background to-background p-5">
-              <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-                <span>AI Spend Pulse</span>
-                <span>Live</span>
-              </div>
-              <div className="mt-6 grid gap-3">
-                {["Cursor", "Claude", "ChatGPT"].map((tool) => (
-                  <div key={tool} className="space-y-2">
-                    <div className="flex items-center justify-between text-sm font-medium text-foreground">
-                      <span>{tool}</span>
-                      <span className="text-xs text-muted-foreground">
-                        $
-                        {tool === "Cursor" ? 420 : tool === "Claude" ? 180 : 95}
-                        /mo
-                      </span>
-                    </div>
-                    <div className="h-2 w-full rounded-full bg-muted">
-                      <div
-                        className="h-2 rounded-full bg-primary"
-                        style={{
-                          width:
-                            tool === "Cursor"
-                              ? "78%"
-                              : tool === "Claude"
-                                ? "52%"
-                                : "35%",
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 rounded-xl border border-dashed border-border/70 bg-background/70 p-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                  Savings alert
-                </p>
-                <p className="mt-2 text-lg font-semibold text-foreground">
-                  $340/mo identified in redundant spend
-                </p>
-              </div>
+            <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-muted/10">
+              <Image
+                src="/illustration.png"
+                alt="Team reviewing AI usage with an assistant"
+                width={900}
+                height={720}
+                className="h-auto w-full object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-3">
           {[
             {
               title: "Precision pricing",
@@ -204,7 +172,58 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
+              Use cases
+            </p>
+          </div>
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-card/70 px-3 py-4">
+            <div className="flex w-max gap-3 animate-[prune-carousel_22s_linear_infinite]">
+              {[
+                "Cut redundant IDE seats in 1 audit",
+                "Unify ChatGPT + Claude costs",
+                "Verify retail pricing vs. spend",
+                "Surface unused premium tiers",
+                "Monthly AI spend health check",
+              ].map((copy) => (
+                <div
+                  key={copy}
+                  className="min-w-[220px] rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
+                >
+                  {copy}
+                </div>
+              ))}
+              {[
+                "Cut redundant IDE seats in 1 audit",
+                "Unify ChatGPT + Claude costs",
+                "Verify retail pricing vs. spend",
+                "Surface unused premium tiers",
+                "Monthly AI spend health check",
+              ].map((copy) => (
+                <div
+                  key={`dup-${copy}`}
+                  className="min-w-[220px] rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
+                >
+                  {copy}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
+
+      <style jsx global>{`
+        @keyframes prune-carousel {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
 
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-8 backdrop-blur-sm overflow-y-auto">

@@ -1,9 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useForm, useFieldArray } from "react-hook-form";
+import {
+  useForm,
+  useFieldArray,
+  type UseFormRegisterReturn,
+} from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 import {
   spendFormSchema,
@@ -87,6 +92,17 @@ export function SpendInputForm() {
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10 w-full">
+      {isSubmitting && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="w-40 max-w-[45vw]">
+            <DotLottieReact
+              src="https://lottie.host/7c771d6b-ae0f-4e57-af4e-01db5d14c43f/GTWtbd2hhc.lottie"
+              loop
+              autoplay
+            />
+          </div>
+        </div>
+      )}
       <div className="grid gap-6 rounded-xl border border-border bg-muted/20 p-6 md:grid-cols-2 items-start">
         <div className="flex h-full flex-col gap-2">
           <label className="text-sm font-semibold leading-tight">
@@ -191,12 +207,15 @@ export function SpendInputForm() {
                   <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
                     Seats
                   </label>
-                  <input
-                    {...form.register(`tools.${index}.seats` as const)}
-                    type="number"
+                  <NumberStepper
+                    value={form.watch(`tools.${index}.seats` as const)}
                     min={1}
+                    step={1}
                     placeholder="1"
-                    className="flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm"
+                    register={form.register(`tools.${index}.seats` as const)}
+                    onChange={(nextValue) =>
+                      form.setValue(`tools.${index}.seats` as const, nextValue)
+                    }
                   />
                 </div>
 
@@ -204,21 +223,31 @@ export function SpendInputForm() {
                   <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
                     Monthly Spend
                   </label>
-                  <input
-                    {...form.register(`tools.${index}.monthlySpend` as const)}
-                    type="number"
+                  <NumberStepper
+                    value={form.watch(`tools.${index}.monthlySpend` as const)}
                     min={0}
-                    step="0.01"
+                    step={10}
                     placeholder="$0"
-                    className="flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm"
+                    register={form.register(
+                      `tools.${index}.monthlySpend` as const,
+                    )}
+                    onChange={(nextValue) =>
+                      form.setValue(
+                        `tools.${index}.monthlySpend` as const,
+                        nextValue,
+                      )
+                    }
                   />
                 </div>
 
                 <button
                   type="button"
                   onClick={() => remove(index)}
-                  className="mt-6 h-11 rounded-md border border-red-500/30 px-3 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/10 cursor-pointer"
+                  className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border/60 bg-background/40 px-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:bg-muted cursor-pointer"
                 >
+                  <span aria-hidden className="text-base leading-none">
+                    ×
+                  </span>
                   Remove
                 </button>
               </div>
@@ -239,9 +268,12 @@ export function SpendInputForm() {
 
       <button
         type="submit"
-        className="h-12 w-full rounded-md bg-primary text-primary-foreground text-sm font-semibold shadow-lg shadow-primary/20 cursor-pointer"
+        className="group h-12 w-full rounded-full border border-border bg-background text-sm font-semibold uppercase tracking-[0.25em] text-foreground shadow-[0_18px_40px_-28px_rgba(0,0,0,0.8)] transition-colors hover:bg-muted cursor-pointer"
       >
-        {isSubmitting ? "Running Audit..." : "Run Audit"}
+        <span className="flex items-center justify-center gap-3">
+          <span className="inline-flex h-2 w-2 rounded-full bg-primary/70" />
+          {isSubmitting ? "Running Audit..." : "Run Audit"}
+        </span>
       </button>
     </form>
   );
@@ -255,6 +287,15 @@ type DropdownSelectProps = {
   options: SelectOption[];
   placeholder?: string;
   onChange: (value: string) => void;
+};
+
+type NumberStepperProps = {
+  value?: number;
+  min: number;
+  step: number;
+  placeholder: string;
+  register: UseFormRegisterReturn;
+  onChange: (value: number) => void;
 };
 
 function DropdownSelect({
@@ -309,5 +350,53 @@ function DropdownSelect({
         )}
       </div>
     </details>
+  );
+}
+
+function NumberStepper({
+  value,
+  min,
+  step,
+  placeholder,
+  register,
+  onChange,
+}: NumberStepperProps) {
+  const current =
+    typeof value === "number" && !Number.isNaN(value) ? value : min;
+
+  const updateValue = (nextValue: number) => {
+    const normalized = Math.max(min, Number(nextValue.toFixed(2)));
+    onChange(normalized);
+  };
+
+  return (
+    <div className="flex h-11 w-full overflow-hidden rounded-md border border-input bg-background shadow-sm">
+      <input
+        {...register}
+        type="number"
+        min={min}
+        step={step}
+        placeholder={placeholder}
+        className="w-full bg-transparent px-3 py-2 text-sm outline-none appearance-none"
+      />
+      <div className="flex flex-col border-l border-border">
+        <button
+          type="button"
+          onClick={() => updateValue(current + step)}
+          className="flex h-1/2 w-10 items-center justify-center text-xs font-semibold text-muted-foreground hover:bg-muted cursor-pointer"
+          aria-label="Increase value"
+        >
+          +
+        </button>
+        <button
+          type="button"
+          onClick={() => updateValue(current - step)}
+          className="flex h-1/2 w-10 items-center justify-center text-xs font-semibold text-muted-foreground hover:bg-muted cursor-pointer"
+          aria-label="Decrease value"
+        >
+          -
+        </button>
+      </div>
+    </div>
   );
 }
