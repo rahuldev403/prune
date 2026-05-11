@@ -10,30 +10,43 @@ export const PRICING_DB = {
   Cursor: {
     Hobby: 0,
     Pro: 20,
-    Business: 40,
-    Ultra: 40,
+    "Pro+": 60,
+    Ultra: 200,
+    Business: 40, // Business / Teams seat
   },
   "GitHub Copilot": {
-    Individual: 10,
+    Free: 0,
+    Pro: 10,
+    "Pro+": 39,
     Business: 19,
     Enterprise: 39,
   },
   Claude: {
     Free: 0,
     Pro: 20,
-    Team: 30,
+    Max5x: 100,
+    Max20x: 200,
+    TeamStandard: 25,
+    TeamPremium: 125,
   },
   ChatGPT: {
+    Free: 0,
+    Go: 8,
     Plus: 20,
-    Team: 30,
+    Pro: 200,
+    Business: 25,
   },
   Gemini: {
-    Pro: 20,
-    Enterprise: 30,
+    Free: 0,          // web/app chat
+    AIPlus: 7.99,     // "Google AI Plus"
+    AIPro: 19.99,     // "Google AI Pro"
+    AIUltra: 249.99,  // "Google AI Ultra"
   },
   Windsurf: {
-    Starter: 0,
+    Free: 0,
     Pro: 20,
+    Max: 200,
+    Teams: 40,
   },
 } as const;
 
