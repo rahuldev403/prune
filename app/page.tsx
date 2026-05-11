@@ -215,7 +215,7 @@ export default function Home() {
               ].map((copy) => (
                 <div
                   key={`dup-${copy}`}
-                  className="min-w-[180px] sm:min-w-[220px] rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
+                  className="min-w-45 sm:min-w-55 rounded-xl border border-border/70 bg-background/70 px-4 py-3 text-xs font-semibold text-foreground"
                 >
                   {copy}
                 </div>
