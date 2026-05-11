@@ -45,3 +45,20 @@ Build the core `Audit Engine` in pure TypeScript. This is the brain of "Prune." 
 **Blockers / what I'm stuck on:** N/A
 
 **Plan for tomorrow:** Complete the university exams, then immediately return to build the core pure TypeScript `Audit Engine` and author the 5 required automated unit tests for the calculation logic.
+
+## Day 5 2026-05-11
+
+**Hours worked:** 5
+
+**What I did:**
+- Built the `/audit/[id]` dynamic route for the shareable Results Dashboard. 
+- Implemented `generateMetadata` to dynamically create Open Graph tags and Twitter cards based on the database results, fulfilling the viral loop requirement.
+- Engineered a custom `SpendChart` component using Tailwind CSS to visually graph current spend vs. optimized spend.
+- Built the Lead Capture client component. Swapped out the planned Resend API for a direct SMTP integration using Nodemailer to bypass free-tier limitations, ensuring the transactional emails deliver reliably.
+
+**What I learned:** Handling App Passwords and SMTP ports (465 for SSL) directly in a Next.js serverless API route. I also learned that Drizzle's auto-imports in VS Code default to `better-sqlite3` alphabetically, which caused a temporary crash when my Edge runtime couldn't resolve the local file system driver.
+
+**Blockers / what I'm stuck on:** Debugging the `better-sqlite3` import trace took a minute, but swapping it back to the `@neondatabase/serverless` driver fixed the Vercel edge compatibility instantly. 
+
+**Plan for tomorrow:**
+DevOps and Deployment. I need to write the GitHub Actions `ci.yml` file, write the 5 automated Jest tests, deploy to Vercel, and run Lighthouse audits to hit the required $\ge$85/90/90 performance scores.

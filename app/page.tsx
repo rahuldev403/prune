@@ -46,9 +46,19 @@ export default function Home() {
       <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 py-10 sm:py-12 lg:py-16 text-left px-4 sm:px-6">
         <div className="grid gap-6 sm:gap-8 lg:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="space-y-5 sm:space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground">
-              Credex - Prune
-            </p>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="Credex - Prune Logo"
+                width={32}
+                height={32}
+                className="h-8 w-auto"
+                priority
+              />
+              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground mt-1">
+                Credex - Prune
+              </p>
+            </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground">
               Your AI spend, rebuilt for clarity.
             </h1>
