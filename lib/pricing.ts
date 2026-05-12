@@ -4,7 +4,9 @@ export type ToolName =
   | "Claude"
   | "ChatGPT"
   | "Gemini"
-  | "Windsurf";
+  | "Windsurf"
+  | "Anthropic API"
+  | "OpenAI API";
 
 export const PRICING_DB = {
   Cursor: {
@@ -12,7 +14,7 @@ export const PRICING_DB = {
     Pro: 20,
     "Pro+": 60,
     Ultra: 200,
-    Business: 40, 
+    Business: 40,
   },
   "GitHub Copilot": {
     Free: 0,
@@ -37,16 +39,22 @@ export const PRICING_DB = {
     Business: 25,
   },
   Gemini: {
-    Free: 0,          // web/app chat
-    AIPlus: 7.99,     // "Google AI Plus"
-    AIPro: 19.99,     // "Google AI Pro"
-    AIUltra: 249.99,  // "Google AI Ultra"
+    Free: 0, // web/app chat
+    AIPlus: 7.99, // "Google AI Plus"
+    AIPro: 19.99, // "Google AI Pro"
+    AIUltra: 249.99, // "Google AI Ultra"
   },
   Windsurf: {
     Free: 0,
     Pro: 20,
     Max: 200,
     Teams: 40,
+  },
+  "Anthropic API": {
+    Direct: 0,
+  },
+  "OpenAI API": {
+    Direct: 0,
   },
 } as const;
 

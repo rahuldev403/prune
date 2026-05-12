@@ -158,6 +158,9 @@ export function SpendInputForm() {
               ? Object.keys(PRICING_DB[selectedTool] ?? {})
               : [];
 
+            const isApi =
+              selectedTool === "Anthropic API" || selectedTool === "OpenAI API";
+
             return (
               <div
                 key={field.id}
@@ -195,7 +198,7 @@ export function SpendInputForm() {
                   <DropdownSelect
                     label="Plan"
                     value={form.watch(`tools.${index}.plan` as const)}
-                    placeholder="Select plan"
+                    placeholder={isApi ? "API Direct" : "Select plan"}
                     options={planOptions.map((planOption) => ({
                       label: planOption,
                       value: planOption,
@@ -206,21 +209,49 @@ export function SpendInputForm() {
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                    Seats
-                  </label>
-                  <NumberStepper
-                    value={form.watch(`tools.${index}.seats` as const)}
-                    min={1}
-                    step={1}
-                    placeholder="1"
-                    register={form.register(`tools.${index}.seats` as const)}
-                    onChange={(nextValue) =>
-                      form.setValue(`tools.${index}.seats` as const, nextValue)
-                    }
-                  />
-                </div>
+                {isApi ? (
+                  <div className="space-y-2">
+                    <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                      Est. Daily Tokens
+                    </label>
+                    <NumberStepper
+                      value={
+                        form.watch(`tools.${index}.dailyTokens` as const) || 0
+                      }
+                      min={0}
+                      step={50000}
+                      placeholder="100,000"
+                      register={form.register(
+                        `tools.${index}.dailyTokens` as const,
+                      )}
+                      onChange={(nextValue) =>
+                        form.setValue(
+                          `tools.${index}.dailyTokens` as const,
+                          nextValue,
+                        )
+                      }
+                    />
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                      Seats
+                    </label>
+                    <NumberStepper
+                      value={form.watch(`tools.${index}.seats` as const)}
+                      min={1}
+                      step={1}
+                      placeholder="1"
+                      register={form.register(`tools.${index}.seats` as const)}
+                      onChange={(nextValue) =>
+                        form.setValue(
+                          `tools.${index}.seats` as const,
+                          nextValue,
+                        )
+                      }
+                    />
+                  </div>
+                )}
 
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">

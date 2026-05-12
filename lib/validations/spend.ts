@@ -22,8 +22,13 @@ export const USE_CASES = [
 export const toolEntrySchema = z.object({
   toolName: z.enum(TOOL_OPTIONS),
   plan: z.string().min(1, "Plan is required"),
-  seats: z.coerce.number().min(1, "Must have at least 1 seat"),
+  seats: z.coerce
+    .number()
+    .min(1, "Must have at least 1 seat")
+    .optional()
+    .default(1),
   monthlySpend: z.coerce.number().min(0, "Spend connot be negative"),
+  dailyTokens: z.coerce.number().optional(),
 });
 
 export const spendFormSchema = z.object({
