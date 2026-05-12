@@ -56,38 +56,40 @@ export default async function AuditResultPage({
   return (
     <div className="relative overflow-hidden pb-16 sm:pb-20 pt-8 sm:pt-12">
       <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-10 sm:space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <section className="rounded-3xl border border-border bg-linear-to-br from-background via-background to-primary/5 p-6 sm:p-8 md:p-12 shadow-[0_24px_70px_-46px_rgba(0,0,0,0.6)]">
-          <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-start lg:justify-between">
+        <section className="rounded-3xl border border-border bg-linear-to-br from-background via-background to-primary/5 p-5 sm:p-8 md:p-12 shadow-[0_24px_70px_-46px_rgba(0,0,0,0.6)]">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
             <div className="space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
                 Audit Complete
               </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.1]">
                 Your AI spend snapshot
               </h1>
-              <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
+              <p className="text-sm sm:text-lg text-muted-foreground max-w-xl">
                 We modeled tool overlap, retail pricing, and tier efficiency to
                 surface actionable savings.
               </p>
               <a
                 href="/"
-                className="inline-flex h-10 items-center justify-center rounded-full border border-border bg-background px-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:bg-muted cursor-pointer"
+                className="inline-flex h-10 items-center justify-center rounded-full border border-border bg-background px-4 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:bg-muted cursor-pointer"
               >
                 Rerun the audit
               </a>
             </div>
 
-            <div className="rounded-2xl border border-border bg-background/80 p-5 sm:p-6 shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            <div className="w-full lg:w-auto rounded-2xl border border-border bg-background/80 p-5 shadow-sm">
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3 text-center sm:text-left">
                 Potential Monthly Savings
               </p>
-              <div className="mt-3 flex flex-wrap items-end gap-2 sm:gap-3">
-                <span className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-primary">
+              <div className="flex flex-row items-end justify-center sm:justify-start gap-2">
+                <span className="text-5xl sm:text-5xl md:text-6xl font-black tracking-tight text-primary leading-none">
                   ${savings}
                 </span>
-                <span className="text-sm text-muted-foreground">/ month</span>
+                <span className="text-xs sm:text-sm text-muted-foreground mb-1">
+                  / mo
+                </span>
               </div>
-              <p className="mt-4 inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
+              <p className="mt-4 flex items-center justify-center sm:justify-start rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-xs sm:text-sm font-semibold text-primary w-fit mx-auto sm:mx-0">
                 ${annualSavings} annual impact
               </p>
             </div>
@@ -108,17 +110,17 @@ export default async function AuditResultPage({
           </section>
         )}
 
-        <section className="space-y-6">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+        <section className="space-y-4 sm:space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
             <div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight">
+              <h3 className="text-2xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-center sm:text-left">
                 Detailed breakdown
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground text-center sm:text-left">
                 Line-item recommendations paired with an optimization outlook.
               </p>
             </div>
-            <div className="rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-semibold text-muted-foreground">
+            <div className="rounded-full border border-border bg-background/80 px-4 py-2 text-xs sm:text-sm font-semibold text-muted-foreground mx-auto sm:mx-0 w-fit">
               {results.recommendations.length} recommendations
             </div>
           </div>
@@ -139,43 +141,43 @@ export default async function AuditResultPage({
 
         <section>
           {savings >= 500 ? (
-            <div className="rounded-3xl bg-primary text-primary-foreground p-6 sm:p-8 md:p-10 shadow-xl">
+            <div className="rounded-3xl bg-primary text-primary-foreground p-6 sm:p-8 md:p-10 shadow-xl text-center sm:text-left">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="space-y-3">
-                  <p className="text-xs uppercase tracking-[0.35em] text-primary-foreground/70">
+                  <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-primary-foreground/70">
                     Credex - Prune opportunity
                   </p>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold">
+                  <h3 className="text-2xl sm:text-2xl md:text-3xl font-semibold leading-tight">
                     Stop paying retail for AI infrastructure.
                   </h3>
-                  <p className="max-w-2xl text-primary-foreground/80">
+                  <p className="max-w-2xl text-sm sm:text-base text-primary-foreground/80 mx-auto sm:mx-0">
                     You are losing over ${annualSavings} a year. Credex - Prune
                     provides discounted credits for the exact tools you are
                     already using.
                   </p>
                 </div>
-                <button className="h-12 w-full sm:w-auto rounded-full bg-background px-8 text-sm font-semibold text-foreground shadow-lg shadow-black/10 cursor-pointer">
+                <button className="h-12 w-full sm:w-auto rounded-full bg-background px-6 sm:px-8 text-xs sm:text-sm font-semibold text-foreground shadow-lg shadow-black/10 cursor-pointer shrink-0">
                   Book Credex - Prune Consultation
                 </button>
               </div>
             </div>
           ) : (
-            <div className="rounded-3xl border border-border bg-card/80 p-6 sm:p-8 md:p-10">
+            <div className="rounded-3xl border border-border bg-card/80 p-6 sm:p-8 md:p-10 text-center sm:text-left">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="space-y-3">
-                  <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
+                  <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground">
                     Stay in the loop
                   </p>
-                  <h3 className="text-xl sm:text-2xl font-semibold">
+                  <h3 className="text-2xl sm:text-2xl font-semibold">
                     You're spending well.
                   </h3>
-                  <p className="text-sm text-muted-foreground max-w-xl">
+                  <p className="text-sm text-muted-foreground max-w-xl mx-auto sm:mx-0">
                     Your stack is relatively lean. Drop your email below, and we
                     will notify you if Credex - Prune secures infrastructure
                     discounts for teams your size.
                   </p>
                 </div>
-                <div className="w-full max-w-sm">
+                <div className="w-full max-w-sm mx-auto sm:mx-0">
                   <NotifyLeadForm auditId={audit.id} />
                 </div>
               </div>

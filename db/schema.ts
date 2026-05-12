@@ -1,5 +1,6 @@
 import {
   integer,
+  real,
   jsonb,
   pgTable,
   text,
@@ -11,7 +12,7 @@ export const audits = pgTable("audits", {
   id: uuid("id").primaryKey().defaultRandom(),
   inputData: jsonb("input_data").notNull(),
   engineResults: jsonb("engine_results").notNull(),
-  totalMonthlySavings: integer("total_monthly_savings").notNull(),
+  totalMonthlySavings: real("total_monthly_savings").notNull(),
   aiSummery: text("ai_summery"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
