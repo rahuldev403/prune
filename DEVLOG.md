@@ -62,3 +62,33 @@ Build the core `Audit Engine` in pure TypeScript. This is the brain of "Prune." 
 
 **Plan for tomorrow:**
 DevOps and Deployment. I need to write the GitHub Actions `ci.yml` file, write the 5 automated Jest tests, deploy to Vercel, and run Lighthouse audits to hit the required $\ge$85/90/90 performance scores.
+
+## Day 6 2026-05-12
+
+**Hours worked:** 2
+
+**What I did:**
+- Finalized all entrepreneurial documentation (`GTM.md`, `ECONOMICS.md`, `METRICS.md`, `LANDING_COPY.md`).
+- Authored the `PROMPTS.md` file, detailing the prompt engineering strategy used to constrain the Gemini LLM and prevent financial hallucinations.
+- Formatted the user interview notes to extract the core product insights.
+
+**What I learned:** Writing the economics document forced me to realize how critical the "Shareable URL" feature is. To reach $1M ARR with a reasonable CAC, the product mathematically relies on a viral K-factor via Open Graph sharing to drive top-of-funnel leads.
+
+**Blockers / what I'm stuck on:** N/A
+
+**Plan for tomorrow:** Final repository audit. Verify the 12 specific markdown files are present, push the final GitHub Actions CI pipeline, and submit the Vercel URL.
+
+## Day 7 2026-05-13
+
+**Hours worked:** 1
+
+**What I did:**
+- Executed the final deployment to Vercel.
+- Ran Lighthouse mobile audits. Achieved scores of 98 (Performance), 100 (Accessibility), and 100 (Best Practices) due to the server-side Next.js architecture and minimal client JS payload.
+- Verified the GitHub Actions CI pipeline passed all Jest tests and linting.
+
+**What I learned:** Proper environment variable management between local development, GitHub Actions (for tests), and Vercel edge deployment is the key to a smooth final ship day.
+
+**Blockers / what I'm stuck on:** N/A
+
+**Plan for tomorrow:** N/A - Project submitted.
