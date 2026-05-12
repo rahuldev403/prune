@@ -6,7 +6,8 @@ export type ToolName =
   | "Gemini"
   | "Windsurf"
   | "Anthropic API"
-  | "OpenAI API";
+  | "OpenAI API"
+  | "Gemini API";
 
 export const PRICING_DB = {
   Cursor: {
@@ -54,6 +55,9 @@ export const PRICING_DB = {
     Direct: 0,
   },
   "OpenAI API": {
+    Direct: 0,
+  },
+  "Gemini API": {
     Direct: 0,
   },
 } as const;

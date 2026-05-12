@@ -7,9 +7,10 @@ export const TOOL_OPTIONS = [
   "ChatGPT",
   "Anthropic API",
   "OpenAI API",
+  "Gemini API",
   "Gemini",
   "Windsurf",
-];
+] as const;
 
 export const USE_CASES = [
   "coding",

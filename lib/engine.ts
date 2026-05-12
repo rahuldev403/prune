@@ -31,7 +31,9 @@ export function runAuditEngine(input: SpendFormValues): AuditResult {
     let retailOverpay = 0;
 
     const isApi =
-      typedToolName === "Anthropic API" || typedToolName === "OpenAI API";
+      typedToolName === "Anthropic API" ||
+      typedToolName === "OpenAI API" ||
+      typedToolName === "Gemini API";
 
     const planOptions = PRICING_DB[typedToolName];
     if (planOptions && !isApi) {

@@ -177,13 +177,23 @@ export function SpendInputForm() {
                   <DropdownSelect
                     label="Tool"
                     value={form.watch(`tools.${index}.toolName` as const)}
-                    options={TOOL_OPTIONS.map((tool) => ({
-                      label: tool,
-                      value: tool,
-                    }))}
-                    onChange={(value) =>
-                      form.setValue(`tools.${index}.toolName` as const, value)
-                    }
+                    options={[
+                      ...TOOL_OPTIONS.map((tool) => ({
+                        label: tool,
+                        value: tool,
+                      })),
+                      {
+                        label: "More tools and APIs coming soon...",
+                        value: "",
+                      },
+                    ]}
+                    onChange={(value) => {
+                      if (value === "") return;
+                      form.setValue(
+                        `tools.${index}.toolName` as const,
+                        value as ToolName,
+                      );
+                    }}
                   />
                 </div>
 
