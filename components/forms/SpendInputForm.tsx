@@ -164,7 +164,7 @@ export function SpendInputForm() {
             return (
               <div
                 key={field.id}
-                className="grid gap-4 rounded-lg border border-border/50 bg-muted/30 p-4 md:grid-cols-[1.1fr_1fr_0.6fr_0.8fr_auto]"
+                className="grid gap-4 rounded-lg border border-border/50 bg-muted/30 p-4 md:grid-cols-[1.1fr_1fr_1.1fr_1fr_auto]"
               >
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
@@ -212,7 +212,7 @@ export function SpendInputForm() {
                 {isApi ? (
                   <div className="space-y-2">
                     <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                      Est. Daily Tokens
+                      Daily Tokens
                     </label>
                     <NumberStepper
                       value={
@@ -359,7 +359,7 @@ function DropdownSelect({
         </span>
         <span className="text-xs text-muted-foreground">▼</span>
       </summary>
-      <div className="absolute top-full mt-2 max-h-56 w-full overflow-auto rounded-md border border-border bg-background shadow-lg">
+      <div className="absolute top-full z-50 mt-2 max-h-56 w-full overflow-auto rounded-md border border-border bg-background shadow-lg">
         <div className="px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
           {label}
         </div>
