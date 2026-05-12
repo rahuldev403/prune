@@ -27,3 +27,10 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Decisions & Trade-offs
+1. **NeonDB over standard Postgres:** Chose serverless HTTP drivers to avoid connection pooling exhaustion during Next.js edge-runtime spin-ups.
+2. **Gemini over Anthropic:** Pivoted to Google's Gemini `3.5-flash-preview` for the summary generation to bypass strict regional VoIP API billing filters while maintaining speed.
+3. **SMTP over Resend:** Replaced the Resend API with direct `nodemailer` SMTP to ensure transactional emails deliver reliably without free-tier domain restrictions.
+4. **Hardcoded Engine over AI Math:** Kept the core financial calculation strictly in pure TypeScript to ensure 100% deterministic, defensible results, using AI purely for qualitative summarization.
+5. **Local Storage Sync:** Implemented a custom `useEffect` hydration bypass to sync the complex React Hook Form state with `localStorage` to survive page reloads without breaking server-side rendering.
