@@ -156,9 +156,14 @@ export default async function AuditResultPage({
                     already using.
                   </p>
                 </div>
-                <button className="h-12 w-full sm:w-auto rounded-full bg-background px-6 sm:px-8 text-xs sm:text-sm font-semibold text-foreground shadow-lg shadow-black/10 cursor-pointer shrink-0">
+                <a
+                  href="https://credex.rocks/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center h-12 w-full sm:w-auto rounded-full bg-background px-6 sm:px-8 text-xs sm:text-sm font-semibold text-foreground shadow-lg shadow-black/10 cursor-pointer shrink-0"
+                >
                   Book Credex - Prune Consultation
-                </button>
+                </a>
               </div>
             </div>
           ) : (

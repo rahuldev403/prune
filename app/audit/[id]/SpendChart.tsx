@@ -13,7 +13,6 @@ export function SpendChart({
 }: {
   recommendations: Recommendation[];
 }) {
-  // We use a tiny bit of state to trigger the animation on load
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -21,8 +20,6 @@ export function SpendChart({
   }, []);
 
   if (!recommendations || recommendations.length === 0) return null;
-
-  // Find the highest spend so we can scale the bars proportionally
   const maxSpend = Math.max(...recommendations.map((r) => r.currentSpend));
   const totalCurrent = recommendations.reduce(
     (sum, rec) => sum + rec.currentSpend,
